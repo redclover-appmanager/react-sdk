@@ -35,8 +35,8 @@ export const authorize = async (
     const data = await withRetry(
       async () => {
         log(debug, 'Authorizing with Koru...');
-        
-        const url = `${koruUrl}/api/widget/authorize?website_id=${websiteId}&app_id=${appId}`;
+
+        const url = `${koruUrl}/api/auth/widget?website_id=${websiteId}&app_id=${appId}`;
         const response = await fetch(url, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
@@ -48,7 +48,7 @@ export const authorize = async (
 
         const data: AuthResponse = await response.json();
         log(debug, 'Authorization successful', data);
-        
+
         return data;
       },
       retryAttempts,

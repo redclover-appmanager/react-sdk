@@ -92,7 +92,7 @@ react-sdk/
 ### 1. Authorization Flow
 ```typescript
 // Extracted from widget SDK
-GET ${koruUrl}/api/widget/authorize?website_id=${websiteId}&app_id=${appId}
+GET ${koruUrl}/api/auth/widget?website_id=${websiteId}&app_id=${appId}
 ```
 
 ### 2. Caching Strategy
