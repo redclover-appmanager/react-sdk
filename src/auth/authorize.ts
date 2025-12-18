@@ -18,7 +18,8 @@ export const authorize = async (
   websiteId: string,
   appId: string,
   koruUrl: string,
-  options: Required<KoruOptions>
+  options: Required<KoruOptions>,
+  customData?: string
 ): Promise<AuthResponse> => {
   const { cache, cacheDuration, retryAttempts, retryDelay, debug } = options;
 
@@ -36,7 +37,11 @@ export const authorize = async (
       async () => {
         log(debug, 'Authorizing with Koru...');
 
-        const url = `${koruUrl}/api/auth/widget?website_id=${websiteId}&app_id=${appId}`;
+        let url = `${koruUrl}/api/auth/widget?website_id=${websiteId}&app_id=${appId}`;
+        if (customData) {
+          url += `&custom_data=${encodeURIComponent(customData)}`;
+        }
+
         const response = await fetch(url, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },

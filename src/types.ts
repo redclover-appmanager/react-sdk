@@ -39,6 +39,8 @@ export interface AuthResponse {
     /** Customer identifier */
     customer: string;
   };
+  /** Optional custom data passed from the consumer */
+  custom_data?: string;
 }
 
 /**
@@ -69,6 +71,8 @@ export interface KoruProviderProps {
   koruUrl: string;
   /** Optional configuration settings */
   options?: KoruOptions;
+  /** Optional custom data to pass to the app */
+  customData?: string;
   /** Child components */
   children: ReactNode;
 }
@@ -124,6 +128,7 @@ export interface KoruContextValue {
   websiteId: string;
   appId: string;
   koruUrl: string;
+  customData?: string;
   options: Required<KoruOptions>;
   authData: AuthResponse | null;
   loading: boolean;

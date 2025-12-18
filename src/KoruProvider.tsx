@@ -42,6 +42,7 @@ export const KoruProvider: React.FC<KoruProviderProps> = ({
   appId,
   koruUrl,
   options = {},
+  customData,
   children,
 }) => {
   const [authData, setAuthData] = useState<AuthResponse | null>(null);
@@ -59,8 +60,8 @@ export const KoruProvider: React.FC<KoruProviderProps> = ({
     try {
       setLoading(true);
       setError(null);
-      
-      const data = await authorize(websiteId, appId, koruUrl, mergedOptions);
+
+      const data = await authorize(websiteId, appId, koruUrl, mergedOptions, customData);
       setAuthData(data);
     } catch (err) {
       const error = err instanceof Error ? err : new Error('Authorization failed');
@@ -69,7 +70,7 @@ export const KoruProvider: React.FC<KoruProviderProps> = ({
     } finally {
       setLoading(false);
     }
-  }, [websiteId, appId, koruUrl, mergedOptions]);
+  }, [websiteId, appId, koruUrl, mergedOptions, customData]);
 
   // Reload function to manually refresh authorization
   const reload = useCallback(async () => {
@@ -88,13 +89,14 @@ export const KoruProvider: React.FC<KoruProviderProps> = ({
       websiteId,
       appId,
       koruUrl,
+      customData,
       options: mergedOptions,
       authData,
       loading,
       error,
       reload,
     }),
-    [websiteId, appId, koruUrl, mergedOptions, authData, loading, error, reload]
+    [websiteId, appId, koruUrl, customData, mergedOptions, authData, loading, error, reload]
   );
 
   return (

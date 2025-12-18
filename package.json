@@ -1,6 +1,6 @@
 {
   "name": "@redclover/koru-react-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lightweight React SDK for Koru platform authorization and integration",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
