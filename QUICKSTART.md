@@ -23,6 +23,7 @@ function App() {
       websiteId="your-website-id"
       appId="your-app-id"
       koruUrl="https://app.koru.com"
+      customData="optional-custom-context"
     >
       <Dashboard />
     </KoruProvider>

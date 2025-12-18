@@ -47,6 +47,7 @@ function App() {
       websiteId="your-website-id"
       appId="your-app-id"
       koruUrl="https://app.koru.com"
+      customData="optional-custom-context"
       options={{ cache: true, debug: true }}
     >
       <YourApp />
@@ -107,6 +108,7 @@ Context provider that wraps your app to provide Koru authorization.
 | `websiteId` | `string` | ✅ | Unique website identifier from Koru |
 | `appId` | `string` | ✅ | Unique app identifier from Koru |
 | `koruUrl` | `string` | ✅ | Base URL of Koru platform |
+| `customData` | `string` | ❌ | Optional custom context/data |
 | `options` | `KoruOptions` | ❌ | Configuration options |
 | `children` | `ReactNode` | ✅ | Child components |
 
@@ -136,6 +138,7 @@ Hook to access Koru authorization state and data.
   authData: AuthResponse | null;  // Full auth response
   token: string | null;      // Auth token for API calls
   config: KoruConfig | null; // App configuration
+  customData: string | null; // The custom data passed to the provider
   reload: () => Promise<void>;    // Refresh authorization
 }
 ```
